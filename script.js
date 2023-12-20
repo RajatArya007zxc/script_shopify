@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Check if the variant ID is found
             if (variantId) {
                 // Redirect to the specified URL with the variant ID
-                var redirectUrl = 'http://localhost:3000?variant=' + variantId;
+                var redirectUrl = 'http://localhost:3000?variant=' + variantId ;
                 window.location.href = redirectUrl;
             } else {
                 console.error('Variant ID not found in the URL.');
