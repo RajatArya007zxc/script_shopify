@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Find the form element with the specified class
     var formElement = document.querySelector('.product-form__buttons');
-    console.log("Running and get form ELEMENT 🤬🤬🤬🤬", formElement)
+    console.log("Running and get form ELEMENT 🤬🤬🤬🤬", formElement,"product-form__buttons")
 
     // Check if the form element exists
     if (formElement) {
