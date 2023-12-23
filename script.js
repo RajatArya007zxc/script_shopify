@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newButton.style.padding = '10px 30px';
         newButton.style.fontSize = '18px';
         newButton.style.fontWeight = '700';
+        newButton.style.marginTop="40px";
         newButton.textContent = 'Create design';
 
         // Append the new button to the end of the form
@@ -28,17 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
             var currentUrl = window.location.href;
 
             // Extract the variant ID from the URL
-            var match = currentUrl.match(/variant=(\d+)/);
-            var variantId = match ? match[1] : null;
+            // var match = currentUrl.match(/variant=(\d+)/);
+            // var variantId = match ? match[1] : null;
 
-            // Check if the variant ID is found
-            if (variantId) {
+            // // Check if the variant ID is found
+            // if (variantId) {
                 // Redirect to the specified URL with the variant ID
-                var redirectUrl = 'http://localhost:3000?variant=' + variantId;
+                var redirectUrl = 'http://localhost:3000?variant=' + "variantId";
                 window.location.href = redirectUrl;
-            } else {
-                console.error('Variant ID not found in the URL.');
-            }
+            // } else {
+            //     console.error('Variant ID not found in the URL.');
+            // }
         });
     }
 });
