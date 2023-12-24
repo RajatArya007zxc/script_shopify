@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     
 
                      if(extractText.type=="variant"){
-                        var redirectUrl = 'http://localhost:3000/variant/' + extractText.text + "/src=" + source + "/customer_id="+ "123";
+                        var redirectUrl = 'http://localhost:3000/variant/' + extractText.text + "/src/" + source + "/customer_id/"+ "123";
                         window.location.href = redirectUrl;
                      }
                      if(extractText.type=="product"){
