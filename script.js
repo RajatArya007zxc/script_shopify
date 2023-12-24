@@ -1,3 +1,22 @@
+function extractTextFromUrl(url) {
+    // Check if the URL contains the "variant" parameter
+    const variantMatch = url.match(/variant=([^&]+)/);
+    if (variantMatch) {
+        return { text: variantMatch[1], type: 'variant' }; // Return the text after "variant="
+    }
+  
+    // If "variant" parameter is not present, check for "product/"
+    const productMatch = url.match(/\/products\/([^\/]+)/);
+    if (productMatch) {
+        return { text: productMatch[1], type: 'product' }; // Return the text after "product/"
+    }
+  
+    // Return null if no match is found
+    return null;
+  }
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
 
@@ -5,11 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (product_page.includes("products/")) {
         // Find the form element with the specified class
         var formElement = document.querySelector('.product-form__buttons');
-        console.log("Running and get form ELEMENT 🤬🤬🤬🤬", formElement,"product-form__buttons")
-    
+
         // Check if the form element exists
         if (formElement) {
-            console.log(" get form ELEMENT 🆎", formElement)
     
             // Create a new button element
             var newButton = document.createElement('button');
@@ -31,19 +48,21 @@ document.addEventListener('DOMContentLoaded', function () {
     
                 // Get the current URL
                 var currentUrl = window.location.href;
-    
-                // Extract the variant ID from the URL
-                // var match = currentUrl.match(/variant=(\d+)/);
-                // var variantId = match ? match[1] : null;
-    
-                // // Check if the variant ID is found
-                // if (variantId) {
-                    // Redirect to the specified URL with the variant ID
-                    var redirectUrl = 'http://localhost:3000?variant=' + "variantId";
-                    window.location.href = redirectUrl;
-                // } else {
-                //     console.error('Variant ID not found in the URL.');
-                // }
+                let extractText=extractTextFromUrl(currentUrl);
+
+                if(extractText!==null){
+
+                     if(extractText.type=="variant"){
+                        var redirectUrl = 'http://localhost:3000?variant=' + extractText.text;
+                        window.location.href = redirectUrl;
+                     }
+                     if(extractText.type=="product"){
+                        var redirectUrl = 'http://localhost:3000?product=' + extractText.text;
+                        window.location.href = redirectUrl;
+ 
+                     }
+
+                }
             });
         }
 
