@@ -22,6 +22,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let product_page = window.location.href;
     if (product_page.includes("products/")) {
+                    const domain = window.location.origin;
+                    let customer_id = "";
+                    let source =domain.split('/')[2].split('.')[0];
+                    let allScript = document.getElementsByTagName("script");
+
+                    // if (allScript.length > 0) {
+                    // for (let i = 0; i < allScript.length; i++) {
+                    //     if (
+                    //     allScript[i].outerHTML.includes(`http://local/onsitescript.js?customer_id=`)
+                    //     ) {
+                    //     let checkId = allScript[i].outerHTML.split("customer_id=");
+                    //     if (checkId.length == 2) {
+                    //         customer_id = checkId[1].slice(0, 20);
+                    //         break;
+                    //     }
+                    //     }
+                    // }
+                    // }
+
+
+
+
         // Find the form element with the specified class
         var formElement = document.querySelector('.product-form__buttons');
 
@@ -52,12 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if(extractText!==null){
 
+                    
+
                      if(extractText.type=="variant"){
-                        var redirectUrl = 'http://localhost:3000?variant=' + extractText.text;
+                        var redirectUrl = 'http://localhost:3000/variant=' + extractText.text + "/src=" + source + "/customer_id="+ "123";
                         window.location.href = redirectUrl;
                      }
                      if(extractText.type=="product"){
-                        var redirectUrl = 'http://localhost:3000?product=' + extractText.text;
+                        var redirectUrl = 'http://localhost:3000/product=' + extractText.text + "/src=" + source + "/customer_id="+ "123";
                         window.location.href = redirectUrl;
  
                      }
